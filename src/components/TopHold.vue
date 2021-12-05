@@ -192,7 +192,7 @@ export default {
           ranking: rank++,
           address: mergedItems[key].address,
           balance: (mergedItems[key].balance).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-          percent: ((mergedItems[key].balance / 10000000000) * 100).toFixed(4) + "%",
+          percent: ((mergedItems[key].balance / 100000000000) * 100).toFixed(4) + "%",
         });
        }
       });
