@@ -7,7 +7,7 @@ export default new Vuetify({
     theme: {
       themes: {
         light: {
-          primary: '#F4D036',
+          primary: '#c99c0a',
           secondary: '#F4D036',
           accent: '#8c9eff',
           error: '#b71c1c',

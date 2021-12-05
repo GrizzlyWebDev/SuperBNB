@@ -224,6 +224,7 @@ export default {
       },
       { text: "Amount", value: "transferAmount", align: "end" },
       { text: "Currency", value: "currency" },
+      { text: "To", value: "addr" },
       { text: "Date", value: "timestamp", align: "end" },
     ],
     headers: [
@@ -392,7 +393,6 @@ export default {
     async fetchDiv() {
       this.loadingDiv = true;
       let div = await inFlowTxs("0x6FAacFe4Cd810c3387f9f8F07Dda79571ef4c068");
-
       let divTxsData = [];
       div.data.data.ethereum.transfers.map(async (mtxItem) => {
         let mtxRow = {
@@ -410,6 +410,7 @@ export default {
       let divOut = await outFlowTxs(
         "0x6FAacFe4Cd810c3387f9f8F07Dda79571ef4c068"
       );
+      console.log(divOut)
       divOut.data.data.ethereum.transfers.map(async (mtxItem) => {
         let mtxRow = {
           type: "sell",
@@ -420,6 +421,7 @@ export default {
           timestamp: mtxItem.block.timestamp.time,
           block: mtxItem.block.height,
           currency: mtxItem.currency.symbol,
+          addr: mtxItem.address.address,
         };
         divTxsData.push(mtxRow);
       });

@@ -295,7 +295,7 @@ transfers(options:{desc: "block.timestamp.time", limit: $limit, offset: $offset}
 }
 export async function outFlowTxs(wallet) {
   let query = `query ($network: EthereumNetwork!,
-    $address: String!,
+    $sender: String!,
     $offset: Int!
     $from: ISO8601DateTime,
     $till: ISO8601DateTime){
@@ -303,7 +303,7 @@ ethereum(network: $network){
 transfers(options:{desc: "block.timestamp.time"  asc: "currency.symbol" offset: $offset},
 date: {since: $from till: $till },
 amount: {gt: 0},
-sender: {is: $address}) {
+sender: {is: $sender}) {
 
 block {
 timestamp {
@@ -311,9 +311,9 @@ time (format: "%Y-%m-%d %H:%M:%S")
 }
 height
 }
-address: sender {
-address
-annotation
+address: receiver {
+  address
+  annotation
 }
 currency {
 address
@@ -330,7 +330,7 @@ external
   let variables = {
     offset: 0,
     network: "bsc",
-    address: wallet,
+    sender: wallet,
     currency: "",
     from: null,
     till: null,
