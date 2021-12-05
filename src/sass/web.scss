@@ -1,0 +1,579 @@
+// Variables
+@import "variables";
+
+
+
+
+
+$color-particle: #cfcfcf;
+$spacing: 2560px;
+$time-1: 60s;
+$time-2: 120s;
+$time-3: 180s;
+$time-4: 600s;
+
+/* Pauls awesome mixin */
+@function particles($max) {
+   $val: 0px 0px $color-particle;
+   @for $i from 1 through $max {
+      $val: #{$val},
+      random($spacing)+px random($spacing)+px $color-particle;
+   }
+   @return $val;
+}
+
+@mixin particles($max) {
+   box-shadow: particles($max);
+}
+
+/* Styles */
+html, body {
+    height: 100%;
+}
+
+
+.page-bg{
+  z-index: -10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.animation-wrapper {
+  z-index: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.particle,
+.particle:after {
+  background: transparent;
+}
+
+.particle:after {
+  position: absolute;
+  content: "";
+  top: $spacing;
+}
+
+.particle-1 {
+  z-index: 0;
+  animation: animParticle $time-1 linear infinite;
+  @include particles(600);
+  height: 2px;
+  width: 2px;
+}
+
+.particle-1:after {
+  z-index: 0;
+  @include particles(600);
+  height: 2px;
+  width: 2px;
+}
+
+.particle-2 {
+  z-index: 0;
+  animation: animParticle $time-2 linear infinite;
+  @include particles(200);
+  height: 3px;
+  width: 3px;
+}
+
+.particle-2:after {
+  z-index: 0;
+  @include particles(200);
+  height: 3px;
+  width: 3px;
+}
+
+.particle-3 {
+  z-index: 0;
+  animation: animParticle $time-3 linear infinite;
+  @include particles(100);
+  height: 4px;
+  width: 4px;
+}
+
+.particle-3:after {
+  z-index: 0;
+  @include particles(100);
+  height: 4px;
+  width: 4px;
+}
+
+.particle-4 {
+  z-index: 0;
+  animation: animParticle $time-4 linear infinite;
+  @include particles(400);
+  height: 3px;
+  width: 3px;
+}
+
+.particle-4:after {
+  z-index: 0;
+  @include particles(400);
+  height: 3px;
+  width: 3px;
+}
+
+
+
+@keyframes animParticle {
+  from { transform: translateY(0px); }
+  to   { transform: translateY($spacing * -1); }
+}
+
+.page-wrapper {
+    text-align: center;
+    color: #fff;
+    z-index:-1;
+}
+
+.v-application .v-application--is-ltr .theme--light{
+  background-color: $body-bg;
+}
+
+.dark-blue {
+  background: rgb(33, 0, 67, 0.9);
+}
+
+html {
+  background-color: $body-bg;
+}
+
+#app > div > main > div {
+  background: $body-bg;
+}
+.col-md-6 {
+  z-index: 1 !important;
+}
+.col-12 {
+  z-index: 1 !important;
+}
+.v-sheet .theme--dark .v-toolbar .v-app-bar .v-app-bar--elevate-on-scroll .v-app-bar--fixed .v-app-bar--hide-shadow {
+  background-color:#fff !important;
+  border-color:#fff !important;
+  transition: background-color 1s;
+
+  &.onScroll {
+    box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+    transition: background-color 1s;
+  }
+}
+.theme--dark.v-app-bar.v-toolbar.v-sheet {
+  background-color:#fff !important;
+  border-color:#fff !important;
+  transition: background-color 1s;
+
+  &.onScroll {
+    box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+    transition: background-color 1s;
+  }
+}
+
+
+a {
+  text-decoration: none !important;
+}
+
+.v-text-field--outlined fieldset {
+  border: 1px solid #F4D036;
+  color: #000 !important;
+  margin: 0 auto;
+}
+
+.v-text-field--outlined.v-input--is-focused fieldset, .v-text-field--outlined.v-input--has-state fieldset {
+  border: 1px solid #F4D036;
+  color: #000 !important;
+  margin: 0 auto;
+}
+
+ .card-gradient {
+  background: linear-gradient(45deg, #c99c0a 30% , #f4ce36 70%) !important;
+  border-radius: 10px 10px 10px 10px !important;
+}
+
+.theme--dark.v-data-table {
+  margin: 0 !important;
+  padding: 10px 0 5px !important;
+  background: #00000088 !important;
+  border-style: solid !important;
+  border-color: #19087000 !important;
+  border-radius: 12px !important;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  z-index: 1 !important;
+}
+#app > div > main > div > div.container > div > div > div:nth-child(2) > div:nth-child(1) > div.v-data-table.elevation-1.mytable.v-data-table--fixed-header.v-data-table--has-bottom.theme--dark > div.v-data-table__wrapper > table > tbody > tr:nth-child(1){
+  z-index: 1 !important;
+}
+#app > div > main > div > div > div > div > div:nth-child(2) > div.col-md-5.col-12 > div:nth-child(1) > div:nth-child(3) > div > div:nth-child(3) > a {
+  color:#ffffff !important;
+}
+#app > div > main > div > div > div > div > div:nth-child(2) > div.col-md-5.col-12 > div:nth-child(1) > div:nth-child(3) > div > div:nth-child(3) > a:hover {
+  color:#fff !important;
+}
+a {
+  color: #fff !important;
+}
+a:hover {
+  color: #F4D036 !important;
+}
+
+#app > div > main > div > div.container > div > div > div:nth-child(2) > div.col-md-5.col-12 > div:nth-child(1) > div:nth-child(3) > div > div:nth-child(3) > a:hover {
+  color: #F4D036 !important;
+}
+
+.theme--dark.v-data-table.v-data-table--fixed-header thead th {
+   font-size: 12px !important;
+   font-weight: 400 !important;
+   color: #FFF !important;
+   background: #19087000 !important;
+}
+#app > div.v-application--wrap > nav > div.v-navigation-drawer__append > div > div.v-list-item__subtitle.text-center.my-0 {
+  color:#000000 !important;
+}
+
+.theme--dark.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
+  color:#070606 !important;
+}
+
+.theme--dark.v-icon {
+  color:#FFF !important;
+}
+
+#app > div > header > div > button > span > i {
+  color:#000000 !important;
+}
+
+#app > div.v-application--wrap > nav > div.v-navigation-drawer__content > div.v-list.v-sheet.theme--dark.v-list--nav > div > a.my-2.v-list-item.v-list-item--link.theme--dark > div.v-list-item__icon > i {
+  color:#000000 !important;
+}
+
+#app > div.v-application--wrap > nav > div.v-navigation-drawer__content > div.v-list.v-sheet.theme--dark.v-list--nav > div > a.router-link-exact-active.router-link-active > div > div.v-list-item__icon > i {
+  color:#000000 !important;
+}
+
+#app > div.v-application--wrap > nav > div.v-navigation-drawer__content > div.v-list.v-sheet.theme--dark.v-list--nav > div > a:nth-child(3) > div > div.v-list-item__icon > i {
+  color:#000000 !important;
+}
+
+#app > div.v-application--wrap > nav > div.v-navigation-drawer__content > div.v-list.v-sheet.theme--dark.v-list--nav > div > a:nth-child(2) > div > div.v-list-item__icon > i {
+  color:#000000 !important;
+}
+
+
+.v-data-table__mobile-row__cell{
+  max-width: 30vw !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+
+.c-card__text {
+  color: #fff !important;
+  font-size: 1.2rem !important;
+  font-weight: 400 !important;
+  padding-top: 0;
+}
+
+.v-card__text {
+  color: #fff !important;
+  font-size: 1.2rem !important;
+  font-weight: 400 !important;
+  padding-top: 0;
+}
+
+.theme--dark.v-data-table
+  > .v-data-table__wrapper
+  > table
+  > tbody
+  > tr:hover{
+  background: #f4d136b2 !important;
+}
+
+
+$progress-linear-stripe-gradient: linear-gradient(
+  135deg,
+  hsla(0, 0%, 100%, .25) 25%,
+  transparent 0,
+  transparent 50%,
+  hsla(0, 0%, 100%, .25) 0,
+  hsla(0, 0%, 100%, .25) 75%,
+  transparent 0,
+  transparent
+) !default;
+
+#app > div > main > div > div > div > div > div.row.justify-center > div > div:nth-child(2) > button.v-btn.v-btn--is-elevated.v-btn--has-bg.theme--light.v-size--default {
+  font-family: "Roboto", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  fill: #000000;
+  color: #000000;
+  background-color: #F4D036;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#app > div > main > div > div > div > div > div.row.justify-center > div > div:nth-child(2) > button.ml-3.v-btn.v-btn--outlined.theme--dark.v-size--default {
+  font-family: "Roboto", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  fill: #000000;
+  color: #000000;
+  background-color: #F4D036;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#app > div > main > div > div > div > div > div.row.justify-center > div > div:nth-child(2) > button.v-btn.v-btn--disabled.v-btn--has-bg.theme--light.v-size--default {
+  font-family: "Roboto", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  fill: #000000;
+  color: #000000;
+  background-color: #F4D036;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#app > div > main > div > div > div > div > div.row.justify-center > div > div:nth-child(2) > button.ml-3.v-btn.v-btn--disabled.v-btn--outlined.theme--dark.v-size--default {
+  font-family: "Roboto", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  fill: #000000;
+  color: #000000;
+  background-color: #F4D036;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.theme--dark.v-input input, .theme--dark.v-input textarea {
+  color:#000000 !important;
+}
+
+.theme--dark.v-label {
+  color:#000000 !important;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.v-progress-linear {
+  background: #F4D036;
+}
+
+.theme--dark.v-data-table > .v-data-table__wrapper > table > tbody > tr.sell,
+.theme--dark.v-data-table
+  > .v-data-table__wrapper
+  > table
+  > tbody
+  > tr.sell
+  > td,
+.theme--dark.v-data-table
+  > .v-data-table__wrapper
+  > table
+  > tbody
+  > tr.sell:hover {
+  font-size: 12px !important;
+  color: #ff4081 !important;
+  font-weight: 400 !important; 
+  z-index: 1 !important;
+}
+
+
+.theme--dark.v-data-table > .v-data-table__wrapper > table > tbody > tr.buy,
+.theme--dark.v-data-table
+  > .v-data-table__wrapper
+  > table
+  > tbody
+  > tr.buy
+  > td,
+.theme--dark.v-data-table
+  > .v-data-table__wrapper
+  > table
+  > tbody
+  > tr.buy:hover {
+  font-size: 12px !important;
+  color: #07ca00 !important;
+  font-weight: 400 !important;
+}
+.theme--dark.v-data-table tbody tr:hover:not(.v-data-table__expanded__content) {
+  z-index: 1 !important;
+}
+.theme--dark.v-data-table.v-data-table--fixed-header thead th {
+  z-index: 1;
+}
+th .text-start .sortable {
+
+  z-index: 1;
+}
+th .text-start {
+
+  z-index: 1;
+}
+th .text-end .sortable {
+ 
+  z-index: 1;
+}
+th .text-end {
+
+  z-index: 1;
+}
+.v-data-table__mobile-row__cell{
+  max-width: 30vw !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  z-index: 1;
+}
+.theme--dark.v-data-table
+  > .v-data-table__wrapper
+  > table
+  > tbody
+  > tr:not(:last-child)
+  > td.v-data-table__mobile-row:last-child,
+.theme--dark.v-data-table
+  > .v-data-table__wrapper
+  > table
+  > tbody
+  > tr:not(:last-child)
+  > th:last-child {
+  border-bottom: thin solid #ffffff;
+}
+.v-card__title{
+  color:#ffffff;
+  font-weight: 400 !important;
+}
+.c-title {
+  color:#ffffff;
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.text-weight-600 {
+  font-weight: 600;
+}
+
+.c-input {
+  position: relative;
+
+  &__loader {
+    position: absolute;
+    top: 30px;
+    right: 10px;
+  }
+}
+
+.c-switch {
+  max-width: 200px;
+}
+
+.c-transferAmount {
+  text-align: end;
+}
+
+
+
+@media screen and (max-width:960px) {
+  .theme--dark.v-data-table > .v-data-table__wrapper > table > tbody > tr.sell,
+.theme--dark.v-data-table
+  > .v-data-table__wrapper
+  > table
+  > tbody
+  > tr.sell
+  > td,
+.theme--dark.v-data-table
+  > .v-data-table__wrapper
+  > table
+  > tbody
+  > tr.sell:hover {
+  font-size: smaller !important;
+  color: #ff4081 !important;
+  font-weight: 400 !important; 
+}
+
+.theme--dark.v-data-table > .v-data-table__wrapper > table > tbody > tr.buy,
+.theme--dark.v-data-table
+  > .v-data-table__wrapper
+  > table
+  > tbody
+  > tr.buy
+  > td,
+.theme--dark.v-data-table
+  > .v-data-table__wrapper
+  > table
+  > tbody
+  > tr.buy:hover {
+  font-size: smaller !important;
+  color: #07ca00 !important;
+  font-weight: 400 !important;
+}
+
+#app > div > main > div > div > div > div > div > div.col-md-7.col-12 > div.card-gradient.v-card.v-sheet.theme--dark.elevation-2 > div.v-card__title.headline.font-weight-bold > button {
+height:auto;
+width:auto;
+}
+
+#app > div > main > div > div > div > div > div > div.col-md-7.col-12 > div.card-gradient.v-card.v-sheet.theme--dark.elevation-2 > div.v-card__title.headline.font-weight-bold > a > span > i {
+  height:auto;
+  width:auto;
+}
+}
+@media screen and (max-width:425px) { 
+
+  .v-card__title.headline.font-weight-bold {
+    font-size: medium !important;
+  }
+
+  .v-card__text.c-card__text.text-weight-600 {
+    font-size: medium !important;
+  }
+  
+  span > i {
+    font-size: large !important
+  }
+
+  #app > div > main > div > div > div > div > div.row.justify-center > div > div:nth-child(2) > button.v-btn.v-btn--is-elevated.v-btn--has-bg.theme--light.v-size--default {
+    font-family: "Roboto", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  fill: #000000;
+  color: #000000;
+  background-color: #F4D036;
+  border-radius: 5px 5px 5px 5px;
+  }
+  
+  #app > div > main > div > div > div > div > div.row.justify-center > div > div:nth-child(2) > button.ml-3.v-btn.v-btn--outlined.theme--dark.v-size--default {
+    font-family: "Roboto", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  fill: #000000;
+  color: #000000;
+  background-color: #F4D036;
+  border-radius: 5px 5px 5px 5px;
+  }
+  
+  #app > div > main > div > div > div > div > div.row.justify-center > div > div:nth-child(2) > button.v-btn.v-btn--disabled.v-btn--has-bg.theme--light.v-size--default {
+    font-family: "Roboto", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  fill: #000000;
+  color: #000000;
+  background-color: #F4D036;
+  border-radius: 5px 5px 5px 5px;
+  }
+  
+  #app > div > main > div > div > div > div > div.row.justify-center > div > div:nth-child(2) > button.ml-3.v-btn.v-btn--disabled.v-btn--outlined.theme--dark.v-size--default {
+    font-family: "Roboto", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  fill: #000000;
+  color: #000000;
+  background-color: #F4D036;
+  border-radius: 5px 5px 5px 5px;
+  }
+}
+
