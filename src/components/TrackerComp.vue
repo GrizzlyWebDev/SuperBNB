@@ -71,13 +71,13 @@
                 :loading="loading"
               >
                 <v-card-title class="headline font-weight-bold">
-                  BUSD Dividends
+                  BNB Dividends
               </v-card-title>
                 <v-card-text class="c-card__text text-weight-600"
                   >{{ earned }}
                 </v-card-text>
                 <v-card-text class="c-card__text"
-                  >{{ earnedUsd }}
+                  >${{ earnedUsd }}
                   <span class="paragraph">*</span></v-card-text
                 >
               </v-card>
@@ -307,12 +307,13 @@ export default {
             }
             let earned = await getRewardTotal(reward);
             let tokenData = await this.getTokenData(balance, earned);
+            let bnbToUsd = await getBnbToUsd();
+            this.earnedUsd = this.numberWithCommas(parseFloat(earned * bnbToUsd).toFixed(2));
             this.balanceUsd = tokenData.balanceUsd;
             this.balance = tokenData.balance;
             this.cap = tokenData.cap;
             this.current = tokenData.current;
             this.earned = tokenData.earned;
-            this.earnedUsd = tokenData.earnedUsd;
             this.loading = false;
           } else {
             this.loading = false;

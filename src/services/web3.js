@@ -74,7 +74,7 @@ gas
     url: "https://graphql.bitquery.io",
     data: { query, variables },
     headers: {
-      "X-API-KEY": "BQY4KX0Gvzt2luZt6iEkV0Ndgi7qJ8OH",
+      "X-API-KEY": "BQYuwBuluZ9md2ZfLfl8nVVXYj6eh5ay",
     },
   });
 }
@@ -106,7 +106,7 @@ export async function getTokenTxs(wallet) {
     url: "https://graphql.bitquery.io",
     data: { query, variables },
     headers: {
-      "X-API-KEY": "BQY7MnGAC0IHnCjpq5n90aruOhBwBxsR",
+      "X-API-KEY": "BQYuwBuluZ9md2ZfLfl8nVVXYj6eh5ay",
     },
   });
 }
@@ -145,7 +145,7 @@ export async function getAllTokenTxs() {
     url: "https://graphql.bitquery.io",
     data: { query },
     headers: {
-      "X-API-KEY": "BQY7MnGAC0IHnCjpq5n90aruOhBwBxsR",
+      "X-API-KEY": "BQYuwBuluZ9md2ZfLfl8nVVXYj6eh5ay",
     },
   });
 }
@@ -207,7 +207,7 @@ transfers(options:{desc: "block.timestamp.time", limit: $limit, offset: $offset}
     url: "https://graphql.bitquery.io",
     data: { query, variables },
     headers: {
-      "X-API-KEY": "BQY7MnGAC0IHnCjpq5n90aruOhBwBxsR",
+      "X-API-KEY": "BQYuwBuluZ9md2ZfLfl8nVVXYj6eh5ay",
     },
   });
 }
@@ -289,7 +289,7 @@ transfers(options:{desc: "block.timestamp.time", limit: $limit, offset: $offset}
     url: "https://graphql.bitquery.io",
     data: { query, variables },
     headers: {
-      "X-API-KEY": "BQY7MnGAC0IHnCjpq5n90aruOhBwBxsR",
+      "X-API-KEY": "BQYuwBuluZ9md2ZfLfl8nVVXYj6eh5ay",
     },
   });
 }

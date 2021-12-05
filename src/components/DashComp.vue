@@ -291,7 +291,6 @@ export default {
       let totalBNB = (reward / 1000000000000000000).toFixed(2);
       this.BNB = this.numberWithCommas(totalBNB);
       let bnbToUsd = await getBnbToUsd();
-      console.log(bnbToUsd);
       this.USDTotal = this.numberWithCommas(parseFloat(this.BNB * bnbToUsd).toFixed(2));
       this.loadingBNB = false;
     },
