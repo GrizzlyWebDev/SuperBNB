@@ -41,9 +41,9 @@
     </v-row>
     <v-row>
       <v-col cols="12">
-        <h4 class="mb-3 dark">Your SuperBNB Rank</h4>
+        <h4 class="mb-3 dark" v-if="!loading">Your SuperBNB Rank</h4>
         <div class="text-center" v-if="loading">
-          <h4 class="mb-3">Loading Rankings please wait...</h4>
+          <h4 class="my-3">Loading Rankings please wait...</h4>
         <v-progress-circular
       indeterminate
       color="amber"
