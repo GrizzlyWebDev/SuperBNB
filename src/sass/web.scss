@@ -201,11 +201,9 @@ a {
 .theme--dark.v-data-table {
   margin: 0 !important;
   padding: 10px 0 5px !important;
-  background: #00000088 !important;
-  border-style: solid !important;
-  border-color: #19087000 !important;
+  background: linear-gradient(45deg, #c99c0a 30% , #f4ce36 80%) !important;
   border-radius: 12px !important;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: 0px 6px 6px -3px rgba(0, 0, 0, 0.2), 0px 10px 14px 1px rgba(0, 0, 0, 0.14), 0px 4px 18px 3px rgba(0, 0, 0, 0.12) !important;
   z-index: 1 !important;
 }
 #app > div > main > div > div.container > div > div > div:nth-child(2) > div:nth-child(1) > div.v-data-table.elevation-1.mytable.v-data-table--fixed-header.v-data-table--has-bottom.theme--dark > div.v-data-table__wrapper > table > tbody > tr:nth-child(1){
@@ -365,7 +363,7 @@ $progress-linear-stripe-gradient: linear-gradient(
   background: #F4D036;
 }
 
-.theme--dark.v-data-table > .v-data-table__wrapper > table > tbody > tr.sell,
+/* .theme--dark.v-data-table > .v-data-table__wrapper > table > tbody > tr.sell,
 .theme--dark.v-data-table
   > .v-data-table__wrapper
   > table
@@ -381,13 +379,20 @@ $progress-linear-stripe-gradient: linear-gradient(
   color: #ff000d !important;
   font-weight: 400 !important; 
   z-index: 1 !important;
+} */
+
+#app > div > main > div > div.container > div > div > div > div.col.col-12 > div > div.v-data-table__wrapper > table > tbody > tr:nth-child(1) {
+  font-size: 12px !important;
+  color: #ffffff !important;
+  font-weight: 400 !important; 
+  z-index: 1 !important;
 }
 
 #app > div > main > div > div.container > div > div > div:nth-child(2) > div.col-md-5.col-12 > div:nth-child(2) > div > p:nth-child(1) {
   color: #000000 !important;
 }
 
-.theme--dark.v-data-table > .v-data-table__wrapper > table > tbody > tr.buy,
+/* .theme--dark.v-data-table > .v-data-table__wrapper > table > tbody > tr.buy,
 .theme--dark.v-data-table
   > .v-data-table__wrapper
   > table
@@ -402,7 +407,7 @@ $progress-linear-stripe-gradient: linear-gradient(
   font-size: 12px !important;
   color: #09ac03 !important;
   font-weight: 400 !important;
-}
+} */
 .theme--dark.v-data-table tbody tr:hover:not(.v-data-table__expanded__content) {
   z-index: 1 !important;
 }
@@ -481,7 +486,7 @@ th .text-end {
 
 
 @media screen and (max-width:960px) {
-  .theme--dark.v-data-table > .v-data-table__wrapper > table > tbody > tr.sell,
+  /* .theme--dark.v-data-table > .v-data-table__wrapper > table > tbody > tr.sell,
 .theme--dark.v-data-table
   > .v-data-table__wrapper
   > table
@@ -496,9 +501,9 @@ th .text-end {
   font-size: smaller !important;
   color: #ff0000 !important;
   font-weight: 400 !important; 
-}
+} */
 
-.theme--dark.v-data-table > .v-data-table__wrapper > table > tbody > tr.buy,
+/* .theme--dark.v-data-table > .v-data-table__wrapper > table > tbody > tr.buy,
 .theme--dark.v-data-table
   > .v-data-table__wrapper
   > table
@@ -513,7 +518,7 @@ th .text-end {
   font-size: smaller !important;
   color: #05a300 !important;
   font-weight: 400 !important;
-}
+} */
 
 #app > div > main > div > div > div > div > div > div.col-md-7.col-12 > div.card-gradient.v-card.v-sheet.theme--dark.elevation-2 > div.v-card__title.headline.font-weight-bold > button {
 height:auto;

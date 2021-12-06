@@ -42,7 +42,15 @@
     <v-row>
       <v-col cols="12">
         <h4 class="mb-3 dark">Your SuperBNB Rank</h4>
+        <div class="text-center" v-if="loading">
+          <h4 class="mb-3">Loading Rankings please wait...</h4>
+        <v-progress-circular
+      indeterminate
+      color="amber"
+    ></v-progress-circular>
+      </div>
         <v-data-table
+        v-if="!loading"
           dark
           class="elevation-1 mytable"
           :items-per-page="1"
@@ -60,26 +68,7 @@
         </v-data-table>
       </v-col>
     </v-row>
-    <v-row>
-      <v-col cols="12">
-        <h4 class="mb-3 dark">SuperBNB Top Holders</h4>
-        <v-data-table
-          dark
-          class="elevation-1 mytable"
-          :items-per-page="10"
-          fixed-header
-          :loading="loading"
-          loading-text="Loading... This may take a while."
-          :headers="headers"
-          :items="rank"
-          :item-class="row_classes"
-          :footer-props="{
-            'items-per-page-options': [10],
-          }"
-        >
-        </v-data-table>
-     </v-col>
-    </v-row>
+    
   </v-container>
 </template>
 
@@ -116,6 +105,7 @@ export default {
     if(localStorage.wallet) {
       this.wallet = localStorage.wallet.toLowerCase();
     }
+    this.loading = true;
     this.fetchIsland()
   },
   methods: {
@@ -147,7 +137,6 @@ export default {
       this.ranking = [];
     },
     async fetchIsland() {
-      this.loading = true;
       let SuperBNBOut = await getAllTokenTxs();
       let addresses = [];
       SuperBNBOut.data.data.ethereum.transfers.map(async (txItem) => {

@@ -171,6 +171,7 @@ export default {
       },
       { text: "Amount", value: "transferAmount", align: "end" },
       { text: "Currency", value: "currency" },
+      { text: "In/Out", value: "In"},
       { text: "Date", value: "timestamp", align: "end" },
     ],
     balance: 0,
@@ -249,7 +250,6 @@ export default {
 
         this.loading = true;
         let txs = await inFlowTxs(this.wallet);
-       
           let txsData = [];
             txs.data.data.ethereum.transfers.map(async (txItem) => {
               let txRow = {
@@ -259,6 +259,7 @@ export default {
                   timestamp: txItem.block.timestamp.time,
                   block: txItem.block.height,
                   currency: txItem.currency.symbol,
+                  In: "In",
                 }
               txsData.push(txRow);
             });
@@ -271,6 +272,7 @@ export default {
                   timestamp: txItem.block.timestamp.time,
                   block: txItem.block.height,
                   currency: txItem.currency.symbol,
+                  In: "Out",
                 }
               txsData.push(txRow);
             });
