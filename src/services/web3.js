@@ -297,10 +297,11 @@ export async function outFlowTxs(wallet) {
   let query = `query ($network: EthereumNetwork!,
     $sender: String!,
     $offset: Int!
+    $limit: Int!,
     $from: ISO8601DateTime,
     $till: ISO8601DateTime){
 ethereum(network: $network){
-transfers(options:{desc: "block.timestamp.time"  asc: "currency.symbol" offset: $offset},
+transfers(options:{desc: "block.timestamp.time"  asc: "currency.symbol" offset: $offset limit: $limit},
 date: {since: $from till: $till },
 amount: {gt: 0},
 sender: {is: $sender}) {
@@ -329,6 +330,7 @@ external
 }`;
   let variables = {
     offset: 0,
+    limit: 100,
     network: "bsc",
     sender: wallet,
     currency: "",
@@ -349,11 +351,12 @@ external
 export async function inFlowTxs(wallet) {
   let query = `query ($network: EthereumNetwork!,
     $address: String!,
-    $offset: Int!
+    $offset: Int!,
+    $limit: Int!,
     $from: ISO8601DateTime,
     $till: ISO8601DateTime){
 ethereum(network: $network){
-transfers(options:{desc: "block.timestamp.time"  asc: "currency.symbol" offset: $offset},
+transfers(options:{desc: "block.timestamp.time"  asc: "currency.symbol" offset: $offset limit: $limit},
 date: {since: $from till: $till },
 amount: {gt: 0},
 receiver: {is: $address}) {
@@ -383,6 +386,7 @@ external
   `;
   let variables = {
     offset: 0,
+    limit: 100,
     network: "bsc",
     address: wallet,
     from: null,
