@@ -439,7 +439,7 @@ export async function getAllTxs(wallet) {
 
 export async function getTokenBalanceWeb3(token, wallet, decimals) {
   try {
-    var tokenInst = new web3.eth.Contract(abi, token);
+    var tokenInst = new web3.eth.Contract(SuperAbi, token);
     let val = await tokenInst.methods.balanceOf(wallet).call();
     return convertDecimal(val, decimals).toFixed(3);
   } catch (e) {
@@ -488,7 +488,7 @@ export async function getBurnt(token, decimals) {
 
 export async function getTokenTotalSupply(token, decimals) {
   try {
-    var tokenInst = new web3.eth.Contract(abi, token);
+    var tokenInst = new web3.eth.Contract(SuperAbi, token);
     let supply = await tokenInst.methods.totalSupply().call();
     return convertDecimal(supply, decimals).toFixed();
   } catch (e) {
@@ -557,7 +557,7 @@ export function convertDecimal(token_amount, token_decimal) {
 }
 
 export async function getTokenDecimals(address) {
-  var contract = await new web3.eth.Contract(abi, address);
+  var contract = await new web3.eth.Contract(SuperAbi, address);
 
   return await contract.methods.decimals().call();
 }
