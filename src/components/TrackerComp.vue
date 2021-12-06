@@ -77,7 +77,7 @@
                   >{{ earned }}
                 </v-card-text>
                 <v-card-text class="c-card__text"
-                  >${{ earnedUsd }}
+                  >{{ earnedUsd }}
                   <span class="paragraph">*</span></v-card-text
                 >
               </v-card>
@@ -302,7 +302,7 @@ export default {
             let earned = await getRewardTotal(reward);
             let tokenData = await this.getTokenData(balance, earned);
             let bnbToUsd = await getBnbToUsd();
-            this.earnedUsd = this.numberWithCommas(parseFloat(earned * bnbToUsd).toFixed(2));
+            this.earnedUsd = "$" + this.numberWithCommas(parseFloat(earned * bnbToUsd).toFixed(2));
             this.balanceUsd = tokenData.balanceUsd;
             this.balance = tokenData.balance;
             this.cap = tokenData.cap;

@@ -161,7 +161,7 @@
           </v-card-text>
         </v-card> -->
         <v-col cols="12">
-        <h4 class="my-6">Rewards Transactions</h4>
+        <h4 class="my-6">BNB Rewards Wallet Transactions</h4>
         <v-data-table
           dark
           class="elevation-1 mytable"
