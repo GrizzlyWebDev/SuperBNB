@@ -94,7 +94,7 @@ export default {
       { text: "Quantity", value: "balance", align: "end" },
       { text: "Percent of Supply", value: "percent", align: "end" },
     ],
-    rank: [],
+    sorted: [],
     wallet: "",
     loading: false,
     loadingIsland: false,
@@ -117,11 +117,10 @@ export default {
       this.ranking = [];
       let wallet = this.wallet.toLowerCase();
       localStorage.wallet = wallet.toLowerCase();
-      let sorted = await this.fetchIsland();
       this.loading = false;
-      for (let i=0; i<sorted.sorted.length; i++){
-          if (sorted.sorted[i].address === wallet) {
-            this.ranking.push(sorted.sorted[i])
+      for (let i=0; i<this.sorted.length; i++){
+          if (this.sorted[i].address === wallet) {
+            this.ranking.push(this.sorted[i])
             this.loadingIsland = false;
             return;
           }
@@ -185,11 +184,8 @@ export default {
         });
        }
       });
-      this.rank = sorted;
+      this.sorted = sorted;
       this.loading = false;
-     return {
-      sorted: sorted,
-    } 
     }
   },
 };
