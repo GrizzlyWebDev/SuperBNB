@@ -191,7 +191,6 @@ import {
   getTokenTotalSupply,
   getTokenToBnb,
   getBurnt,
-  getTokenTxs,
   outFlowTxs,
   convertDecimal,
 } from "@/services/web3";
@@ -267,10 +266,6 @@ export default {
       }
 
       this.loading = true;
-      let txs;
-      this.txs = await getTokenTxs(this.wallet);
-      localStorage.txs = JSON.stringify(txs);
-
       let balance = await getTokenBalanceWeb3(
         "0x4B8f0bc4e86Ea14b0c22d356Af927bd7A43aC2c6",
         vm.wallet,
@@ -306,9 +301,7 @@ export default {
         let mtxRow = {
           type: "sell",
           hash: mtxItem.transaction.hash,
-          transferAmount: this.numberWithCommas(
-            parseFloat(mtxItem.amount * -1).toFixed(2)
-          ),
+          transferAmount: parseFloat(mtxItem.amount * -1).toFixed(6),
           timestamp: mtxItem.block.timestamp.time,
           block: mtxItem.block.height,
           currency: mtxItem.currency.symbol,
@@ -320,23 +313,6 @@ export default {
         return new Date(b.timestamp) - new Date(a.timestamp);
       });
       this.divTxsData = divTable;
-      let BNBBal = await this.axios({
-        method: "get",
-        url: "https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress=0xe9e7cea3dedca5984780bafc599bd69add087d56&address=0x6FAacFe4Cd810c3387f9f8F07Dda79571ef4c068&apikey=ZVGVYZ9BHGS3H9CA1MRGMH7R3Z95CNRHRM",
-        crossDomain: true,
-      });
-      BNBBal = await convertDecimal(BNBBal.data.result, 18).toFixed(2);
-      let bnbToUsd = await getBnbToUsd();
-      let divBalance = await this.axios({
-        method: "get",
-        url: "https://api.bscscan.com/api?module=account&action=balance&address=0x6FAacFe4Cd810c3387f9f8F07Dda79571ef4c068&tag=latest&apikey=ZVGVYZ9BHGS3H9CA1MRGMH7R3Z95CNRHRM",
-      });
-      divBalance = await convertDecimal(divBalance.data.result, 18).toFixed(2);
-      let totalUsd = +BNBBal + divBalance * bnbToUsd;
-      this.balanceDiv = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(parseFloat(totalUsd).toFixed(2));
       this.loadingDiv = false;
     },
     async fetchLiq() {
@@ -378,7 +354,6 @@ export default {
     async getTokenData(balance, earned) {
       let vm = this;
       let decimals = 18;
-
       let bnbToUsd = await getBnbToUsd();
       let token = "0x4B8f0bc4e86Ea14b0c22d356Af927bd7A43aC2c6";
       let pair = "0xf2e6f7B7D8CEF0787f243E5a7cd91766667Fefdb";

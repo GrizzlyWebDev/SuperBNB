@@ -149,13 +149,11 @@ import { mdiInformationOutline } from "@mdi/js";
 import {
   getBnbToUsd,
   getTokenBalanceWeb3,
-  getTokenTotalSupply,
   getTokenToBnb,
   getRewardTxs,
   getRewardTotal,
   inFlowTxs,
   outFlowTxs,
-  getBurnt,
   checkAddress,
 } from "@/services/web3";
 
@@ -287,7 +285,6 @@ export default {
         localStorage.wallet = "";
         return;
       }
-
       let valid = await checkAddress(this.wallet);
       if (valid) {
         localStorage.wallet = this.wallet.toLowerCase();
@@ -333,11 +330,7 @@ export default {
       let bnbToUsd = await getBnbToUsd();
       let token = "0x4B8f0bc4e86Ea14b0c22d356Af927bd7A43aC2c6";
       let pair = "0xf2e6f7B7D8CEF0787f243E5a7cd91766667Fefdb";
-
-      let supply = await getTokenTotalSupply(token, decimals);
-
       let tokenToBnbResp = await getTokenToBnb(pair, balance);
-
       let tokenToBnb = tokenToBnbResp.price;
       let exchangeVal = tokenToBnbResp.exchangeVal;
 
@@ -360,19 +353,9 @@ export default {
         currency: "USD",
       }).format(parseFloat(exchangeValUsdt).toFixed(2));
 
-      let burnt = await getBurnt(token, decimals);
-      let circSup = parseFloat(supply) - parseFloat(burnt);
-      let cap =
-        (parseFloat(supply) - parseFloat(burnt)) *
-        parseFloat(tokenToBnb) *
-        parseFloat(bnbToUsd);
-      
-
       return {
         decimals: decimals,
         balance: vm.numberWithCommas(balance),
-        burnt: burnt,
-        circSup: vm.numberWithCommas(circSup),
         earned: vm.numberWithCommas(parseFloat(earned).toFixed(3)),
         earnedNum: earned,
         earnedUsd: new Intl.NumberFormat("en-US", {
@@ -387,12 +370,7 @@ export default {
         }).format(balanceUsd),
         balanceUsdNum: balanceUsd,
         current: (tokenToBnb * bnbToUsd * 1).toFixed(10),
-        cap: new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: "USD",
-        }).format(cap),
         address: token,
-        supply: supply,
       };
     },
   },
