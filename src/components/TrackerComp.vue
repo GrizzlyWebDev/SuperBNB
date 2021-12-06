@@ -129,7 +129,7 @@
           @click:row="handleClick"
           :items-per-page="5"
           fixed-header
-          :loading="loading"
+          :loading="loadingTxs"
           :headers="headers"
           :items="txs"
           :item-class="row_classes"
@@ -169,13 +169,14 @@ export default {
       },
       { text: "Amount", value: "transferAmount", align: "end" },
       { text: "Currency", value: "currency" },
-      { text: "In/Out", value: "In"},
+      { text: "In/Out", value: "type"},
       { text: "Date", value: "timestamp", align: "end" },
     ],
     balance: 0,
     amount: null,
     amountPAT: 0,
     loading: false,
+    loadingTxs : false,
     balanceUsd: 0,
     wallet: "",
     url: "",
@@ -206,14 +207,9 @@ export default {
     handleClick(row) {
       window.open("https://bscscan.com/tx/" + row.hash);
     },
-    getPrice() {
-      if(this.current) {
-        this.amountPAT = this.numberWithCommas((this.amount / this.current).toFixed(2));
-      } else {
-        alert("enter wallet to fetch price first");
-      }
+    
       
-    },
+    
     submitForm() {
       this.txs = [];
       this.balance = "No Data Available";
@@ -246,31 +242,29 @@ export default {
       }
         localStorage.wallet = this.wallet;
 
-        this.loading = true;
+        this.loadingTxs = true;
         let txs = await inFlowTxs(this.wallet);
           let txsData = [];
             txs.data.data.ethereum.transfers.map(async (txItem) => {
               let txRow = {
-                  type: "buy",
+                  type: "in",
                   hash: txItem.transaction.hash,
                   transferAmount: this.numberWithCommas(parseFloat(txItem.amount).toFixed(2)),
                   timestamp: txItem.block.timestamp.time,
                   block: txItem.block.height,
                   currency: txItem.currency.symbol,
-                  In: "In",
                 }
               txsData.push(txRow);
             });
         let txsOut = await outFlowTxs(this.wallet);
           txsOut.data.data.ethereum.transfers.map(async (txItem) => {
               let txRow = {
-                  type: "sell",
+                  type: "out",
                   hash: txItem.transaction.hash,
                   transferAmount: this.numberWithCommas(parseFloat(txItem.amount *-1).toFixed(2)),
                   timestamp: txItem.block.timestamp.time,
                   block: txItem.block.height,
                   currency: txItem.currency.symbol,
-                  In: "Out",
                 }
               txsData.push(txRow);
             });
@@ -278,6 +272,7 @@ export default {
               return new Date(b.timestamp) - new Date(a.timestamp);
             });
             this.txs = txsTable;
+            this.loadingTxs = false;
     },
     async fetchData() {
       let vm = this;
