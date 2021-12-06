@@ -92,7 +92,7 @@ export default {
         value: "address",
       },
       { text: "Quantity", value: "balance", align: "end" },
-      { text: "Percent", value: "percent", align: "end" },
+      { text: "Percent of Supply", value: "percent", align: "end" },
     ],
     rank: [],
     wallet: "",
