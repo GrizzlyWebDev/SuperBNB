@@ -102,11 +102,11 @@ export default {
   }),
 
   mounted() {
+    this.loading = true;
+    this.fetchIsland();
     if(localStorage.wallet) {
       this.wallet = localStorage.wallet.toLowerCase();
     }
-    this.loading = true;
-    this.fetchIsland()
   },
   methods: {
     row_classes(item) {
@@ -185,6 +185,9 @@ export default {
        }
       });
       this.sorted = sorted;
+      if(localStorage.wallet) {
+        this.submitForm();
+      }
       this.loading = false;
     }
   },

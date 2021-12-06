@@ -228,10 +228,10 @@ export default {
         };
         divTxsData.push(mtxRow);
       });
-      let divTable = divTxsData.sort(function (a, b) {
+      
+      this.divTxsData = divTxsData.sort(function (a, b) {
         return new Date(b.timestamp) - new Date(a.timestamp);
       });
-      this.divTxsData = divTable;
       this.loadingDiv = false;
     },
     async fetchLiq() {
