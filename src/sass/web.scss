@@ -67,6 +67,7 @@ html, body {
   @include particles(600);
   height: 2px;
   width: 2px;
+  border-radius: 100px;
 }
 
 .particle-1:after {
@@ -74,6 +75,7 @@ html, body {
   @include particles(600);
   height: 2px;
   width: 2px;
+  border-radius: 100px;
 }
 
 .particle-2 {
@@ -82,6 +84,7 @@ html, body {
   @include particles(200);
   height: 3px;
   width: 3px;
+  border-radius: 100px;
 }
 
 .particle-2:after {
@@ -89,6 +92,7 @@ html, body {
   @include particles(200);
   height: 3px;
   width: 3px;
+  border-radius: 100px;
 }
 
 .particle-3 {
@@ -97,6 +101,7 @@ html, body {
   @include particles(100);
   height: 4px;
   width: 4px;
+  border-radius: 100px;
 }
 
 .particle-3:after {
@@ -104,6 +109,7 @@ html, body {
   @include particles(100);
   height: 4px;
   width: 4px;
+  border-radius: 100px;
 }
 
 .particle-4 {
@@ -112,6 +118,7 @@ html, body {
   @include particles(400);
   height: 3px;
   width: 3px;
+  border-radius: 100px;
 }
 
 .particle-4:after {
@@ -119,6 +126,7 @@ html, body {
   @include particles(400);
   height: 3px;
   width: 3px;
+  border-radius: 100px;
 }
 
 
