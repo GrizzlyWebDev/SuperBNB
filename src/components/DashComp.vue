@@ -78,88 +78,7 @@
             </v-card>
           </v-col>
         </v-col>
-        <!-- <v-col cols="12" >
-        <v-card
-          class="card-gradient"
-          dark
-          color="#cca701"
-          elevation="10"
-          :loading="loadingMarket"
-        >
-          <v-card-title class="headline font-weight-bold"
-            >Marketing Wallet Balance
-            <v-spacer></v-spacer>
-            <v-btn
-              color="white"
-              icon
-              @click="fetchMarketing"
-              :disabled="loadingMarket"
-            >
-              <v-icon>mdi-refresh</v-icon>
-            </v-btn>
-            <v-btn
-              color="white"
-              icon
-              href="https://bscscan.com/address/0x00E10Bd9F25cBDcAFdea47e668b515a118Ce5378"
-              target="_blank"
-            >
-              <v-icon>mdi-wallet-outline</v-icon>
-            </v-btn>
-          </v-card-title>
-          <v-card-text class="c-card__text text-weight-600"
-            >{{ balanceMarketing }}
-          </v-card-text>
-        </v-card>
-      </v-col>
-      
-          <v-col cols="12">
-            <v-card
-              class="card-gradient"
-              dark
-              color="#cca701"
-              elevation="10"
-              :loading="loadingBNB"
-            >
-              <v-card-title class="headline font-weight-bold"
-                >Total BNB Rewarded</v-card-title
-              >
-              <v-card-text class="c-card__text text-weight-600">
-                {{ BNB }} (${{USDTotal}})
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-col>
-    </v-row>
-    <v-row>
-     
-      <v-col cols="12" >
-        <v-card
-          class="card-gradient"
-          dark
-          color="#cca701"
-          elevation="10"
-          :loading="loadingDiv"
-        >
-          <v-card-title class="headline font-weight-bold"
-            >Reward Wallet Balance
-            <v-spacer></v-spacer>
-            <v-btn color="white" icon @click="fetchDiv" :disabled="loadingDiv">
-              <v-icon>mdi-refresh</v-icon>
-            </v-btn>
-            <v-btn
-              color="white"
-              icon
-              href="https://bscscan.com/address/0x6FAacFe4Cd810c3387f9f8F07Dda79571ef4c068"
-              target="_blank"
-            >
-              <v-icon>mdi-wallet-outline</v-icon>
-            </v-btn>
-          </v-card-title>
-          <v-card-text class="c-card__text text-weight-600"
-            >{{ balanceDiv }}
-          </v-card-text>
-        </v-card> -->
+       
         <v-col cols="12">
         <h4 class="my-6">BNB Rewards Wallet Transactions</h4>
         <v-data-table
@@ -413,7 +332,7 @@ export default {
           currency: "USD",
         }).format(balanceUsd),
         balanceUsdNum: balanceUsd,
-        current: (tokenToBnb * bnbToUsd * 1).toFixed(10),
+        current: (tokenToBnb * bnbToUsd * 1).toFixed(11),
         cap: new Intl.NumberFormat("en-US", {
           style: "currency",
           currency: "USD",
