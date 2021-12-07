@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
 import Tracker from  '../views/Tracker.vue'
-import Top from '../views/Top.vue'
+import Rank from '../views/Rank.vue'
 
 Vue.use(VueRouter)
 
@@ -18,9 +18,9 @@ const routes = [
     component: Tracker
   },
   {
-    path: '/topholders',
-    name: 'SuperBNB Top Holders',
-    component: Top
+    path: '/ranking',
+    name: 'SuperBNB Ranking',
+    component: Rank
   }
 ]
 

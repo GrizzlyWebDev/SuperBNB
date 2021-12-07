@@ -62,7 +62,7 @@
               <v-list-item-title>Tracker</v-list-item-title>
             </v-list-item>
          </router-link>
-         <router-link to="/topholders">
+         <router-link to="/ranking">
             <v-list-item class="my-2">
               <v-list-item-icon>
               <svg
@@ -85,7 +85,7 @@
               />
             </svg>
             </v-list-item-icon>
-            <v-list-item-title>Top Holders</v-list-item-title>
+            <v-list-item-title>Ranking</v-list-item-title>
           </v-list-item>
          </router-link>
         </v-list-item-group>

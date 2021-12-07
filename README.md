@@ -1,4 +1,4 @@
-# DRIVENx-dash
+# SuperBNB-dash
 
 ## Project setup
 ```

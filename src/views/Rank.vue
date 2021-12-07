@@ -1,17 +1,17 @@
 <template>
 <v-container dark>
-  <TopHold />
+  <Rank />
 </v-container>
 </template>
 
 <script>
-    import TopHold from '../components/TopHold.vue'
+    import Rank from '../components/Rank.vue'
 
   export default {
-    name: 'SuperBNB Top Holders',
+    name: 'SuperBNB Rank',
 
      components: {
-       TopHold
+       Rank
    },
   }
 </script>
